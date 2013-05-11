@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'mechanize'
 require 'json'
+require 'sass'
 
 get '/' do
   haml :index
