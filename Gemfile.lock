@@ -37,3 +37,4 @@ DEPENDENCIES
   json
   mechanize
   sinatra
+  sass (~> 3.2.9)
