@@ -4,15 +4,15 @@ require 'mechanize'
 require 'json'
 
 get '/' do
-	haml :index
+  haml :index
 end
 
 get '/workshops' do 
-	haml :conferences, :workshops => get_workshops_schedule
+  haml :conferences, :workshops => get_workshops_schedule
 end
 
 get '/workshops.json' do
-	get_workshops_schedule.to_json
+  get_workshops_schedule.to_json
 end
 
 
@@ -34,28 +34,28 @@ end
 
 def get_workshops_schedule
 
-	agent = Mechanize.new
-	workshops_page = conference_page = agent.get('http://divecfest.cucei.udg.mx/talleres.html')
+  agent = Mechanize.new
+  workshops_page = conference_page = agent.get('http://divecfest.cucei.udg.mx/talleres.html')
 
-	header = workshops_page.search('.ui-widget-header>tr')
-	headers_array = []
+  header = workshops_page.search('.ui-widget-header>tr')
+  headers_array = []
 
-	header.search('td').each do |x|
-		headers_array << x.text
-	end	
+  header.search('td').each do |x|
+    headers_array << x.text
+  end	
 
-	body = workshops_page.search('.ui-widget.content>tr')
-	workshops_hash = {}
-	hash_index = 0
+  body = workshops_page.search('.ui-widget.content>tr')
+  workshops_hash = {}
+  hash_index = 0
 
-	body.each do |x|
-		hsh = {}	
-		x.search('td').each_with_index do |y, i|
-			hsh[headers_array[i]] = y.text
-		end
-		workshops_hash[hash_index] = hsh
-		hash_index += 1
-	end
+  body.each do |x|
+    hsh = {}
+    x.search('td').each_with_index do |y, i|
+      hsh[headers_array[i]] = y.text
+    end
+    workshops_hash[hash_index] = hsh
+    hash_index += 1
+  end
 
-	workshops_hash
+  workshops_hash
 end
