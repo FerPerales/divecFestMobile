@@ -18,16 +18,53 @@
 	    border-color: $down $down $down * 2;
 }
 
+@mixin transitions($type, $timer) {
+	-webkit-transition: $type $timer;
+	        transition: $type $timer;
+}
+
 
 // Base
 //---------------------
 * {
   font-family: Helvetica, Arial;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-image: url('/images/squairy_light.png');
 }
+
+// Menu
+//----------------------
+.menu {
+	width: 100%;
+	ul {
+  	list-style: none;
+  	display: block;
+  	text-align: center;
+  	@include background_button(#0088cc, #0044cc);
+
+  	li {
+  		width: 24%;
+  		display: inline-block;
+
+  		a {
+  			text-decoration: none;
+  			display: block;
+  			padding: 1em 0;
+  			color: #fff;
+  			@include transitions(background, 0.8s);
+
+  			&:hover {
+  				background: #0044cc;
+  			}
+  		}
+  	}
+  }
+}
+
 
 // ---------------- HOME ----------------
 // --------------------------------------
@@ -65,6 +102,13 @@ body {
   		}
   	}
   }
+}
+
+
+// ---------------- WORKSHOPS ----------------
+// -------------------------------------------
+.workshops {
+	padding: 0 1%;
 }
 
 
