@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'nokogiri'
+require 'open-uri'
 require 'json'
 require 'sass'
 
@@ -82,9 +83,30 @@ end
 # COMMOM METHODS FOR PARSING
 
 def get_conferences_schedule url
-  {}
+  {}  
 end
 
 def get_workshops_schedule url
-  {}
+
+  doc = Nokogiri::HTML(open(url))
+  table_headers = doc.css('.ui-widget-header');
+
+  headers_array = []
+  table_headers.css('td').each do |header|
+    headers_array << header.text
+  end
+
+  conferences_hash = {}
+  counter = 1
+  body = doc.css('tbody')
+  body.css('tr').each do |conference|
+    hsh = {}  
+    conference.css('td').each_with_index do |cell, i|
+      hsh[headers_array[i]] = cell.text
+    end
+    conferences_hash[counter] = hsh
+    counter+= 1
+  end
+
+  conferences_hash  
 end
