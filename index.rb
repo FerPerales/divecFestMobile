@@ -50,7 +50,7 @@ end
 
 get '/conferences/day2' do
   @title = "DivecFest 2013 : Conferencias dia 2"
-  @conferences = get_conferences_day1 
+  @conferences = get_conferences_day2
   haml :conferences
 end
 
@@ -83,11 +83,6 @@ end
 # COMMOM METHODS FOR PARSING
 
 def get_conferences_schedule url
-  {}  
-end
-
-def get_workshops_schedule url
-
   doc = Nokogiri::HTML(open(url))
   table_headers = doc.css('.ui-widget-header');
 
@@ -108,5 +103,31 @@ def get_workshops_schedule url
     counter+= 1
   end
 
-  conferences_hash  
+  conferences_hash
+
+end
+
+def get_workshops_schedule url
+
+  doc = Nokogiri::HTML(open(url))
+  table_headers = doc.css('.ui-widget-header');
+
+  headers_array = []
+  table_headers.css('td').each do |header|
+    headers_array << header.text
+  end
+
+  workshops_hash = {}
+  counter = 1
+  body = doc.css('tbody')
+  body.css('tr').each do |conference|
+    hsh = {}  
+    conference.css('td').each_with_index do |cell, i|
+      hsh[headers_array[i]] = cell.text
+    end
+    workshops_hash[counter] = hsh
+    counter+= 1
+  end
+
+  workshops_hash  
 end

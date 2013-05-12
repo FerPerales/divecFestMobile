@@ -5,24 +5,12 @@
   %table
     %thead
       %tr
-        %td= 'No.'
-        %td= 'Nombre Taller'
-        %td= 'Dias'
         %td= 'Hora'
-        %td= 'Ubicacion'
-        %td= 'Cupo maximo'
-        %td= 'Instructor'
-        %td= 'Empresa'
-        %td= 'Prerequisitos	'
+        %td= 'Conferencia'
+        %td= 'Expositores'
     %tbody
-      -@conferences.each do |v|	
-        %tr
-          %td= v[1]['No.']
-          %td= v[1]['Nombre Taller']
-          %td= v[1]['Dias']
-          %td= v[1]['Hora']
-          %td= v[1]['Ubicación']
-          %td= v[1]['Cupo máximo']
-          %td= v[1]['Instructor']
-          %td= v[1]['Empresa']
-          %td= v[1]['Pre-Requisitos']
+    -@conferences.each do |v|	
+      %tr
+        %td= v[1]['Hora']
+        %td= v[1]['Conferencia']
+        %td= v[1]['Expositores']
