@@ -11,7 +11,7 @@ end
 
 get '/workshops' do
 	@title = "DivecFest 2013 : Workshops"
-  haml :conferences, :workshops => get_workshops_schedule
+  haml :workshops, :workshops => get_workshops_schedule
 end
 
 get '/workshops.json' do
