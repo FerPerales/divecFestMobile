@@ -5,10 +5,12 @@ require 'json'
 require 'sass'
 
 get '/' do
+	@title = "DivecFest 2013"
   haml :index
 end
 
-get '/workshops' do 
+get '/workshops' do
+	@title = "DivecFest 2013 : Workshops"
   haml :conferences, :workshops => get_workshops_schedule
 end
 
@@ -29,6 +31,9 @@ end
 get '/conferences/day2.json' do
 end
 
+get '/*' do
+  return "404 ERROR"
+end
 
 
 # Common methods
