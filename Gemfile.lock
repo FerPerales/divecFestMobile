@@ -3,6 +3,8 @@ GEM
   specs:
     domain_name (0.5.11)
       unf (>= 0.0.5, < 1.0.0)
+    haml (4.0.0)
+      tilt
     json (1.7.7)
     mechanize (2.6.0)
       domain_name (~> 0.5, >= 0.5.1)
@@ -20,6 +22,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
+    sass (3.2.9)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
       rack-protection (~> 1.4)
@@ -34,7 +37,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   json
   mechanize
-  sinatra
   sass (~> 3.2.9)
+  sinatra
