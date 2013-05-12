@@ -16,7 +16,7 @@ get '/' do
 end
 
 get '/workshops/day1' do
-	@title = "DivecFest 2013 : Talleres día 1"
+	@title = "DivecFest 2013 : Talleres dia 1"
   @workshops = get_workshops_day1
   haml :workshops
 end
@@ -26,7 +26,7 @@ get '/workshops/day1.json' do
 end
 
 get '/workshops/day2' do
-  @title = "DivecFest 2013 : Talleres día 2"
+  @title = "DivecFest 2013 : Talleres dia 2"
   @workshops = get_workshops_day2
   haml :workshops
 
@@ -38,7 +38,7 @@ end
 
 
 get '/conferences/day1' do
-  @title = "DivecFest 2013 : Conferencias día 1"
+  @title = "DivecFest 2013 : Conferencias dia 1"
   @conferences = get_conferences_day1 
   haml :conferences
 end
@@ -48,7 +48,7 @@ get '/conferences/day1.json' do
 end
 
 get '/conferences/day2' do
-  @title = "DivecFest 2013 : Conferencias día 2"
+  @title = "DivecFest 2013 : Conferencias dia 2"
   @conferences = get_conferences_day1 
   haml :conferences
 end
