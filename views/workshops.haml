@@ -1,8 +1,7 @@
 .menu
   = haml(:menu)
 .workshops
-  %h1= 'Talleres'
-  / - get_workshops_schedule.except(0).each do |w|
+  %h1= @title
   %table
     %thead
       %tr
@@ -16,7 +15,7 @@
         %td= 'Empresa'
         %td= 'Prerequisitos	'
     %tbody
-      -get_workshops_schedule.each do |v|	
+      -@workshops.each do |v|	
         %tr
           %td= v[1]['No.']
           %td= v[1]['Nombre Taller']
