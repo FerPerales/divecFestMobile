@@ -36,32 +36,88 @@ body {
   background-image: url('/images/squairy_light.png');
 }
 
+h1 {
+  text-align: center;
+  padding: 1em 0;
+}
+
+table {
+  border-spacing: 0;
+
+  thead {
+    tr {
+      td {
+        padding: 1em 0.3em;
+        font-weight: bold;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-top: 1px solid red;
+
+      td {
+        padding: 0.8em 0.3em;
+      }
+
+      &:nth-child(odd) { background: #d9dbe2; }
+    }
+  }
+}
+
+
 // Menu
 //----------------------
 .menu {
 	width: 100%;
-	ul {
-  	list-style: none;
-  	display: block;
-  	text-align: center;
-  	@include background_button(#0088cc, #0044cc);
+  overflow: hidden;
 
-  	li {
-  		width: 24%;
-  		display: inline-block;
+  .menu_mobile {
+    display: none;
+    float: left;
+    width: 100%;
+    @include background_button(#0088cc, #0044cc);
+    position: absolute;
+    
+    a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 1em 0;
+      cursor: pointer;
+    }
+  }
 
-  		a {
-  			text-decoration: none;
-  			display: block;
-  			padding: 1em 0;
-  			color: #fff;
-  			@include transitions(background, 0.8s);
+  .menu_desktop {
+    float: left;
+    width: 100%;
 
-  			&:hover {
-  				background: #0044cc;
-  			}
-  		}
-  	}
+    ul {
+      list-style: none;
+      display: block;
+      text-align: center;
+      @include background_button(#0088cc, #0044cc);
+
+      li {
+        width: 19%;
+        display: inline-block;
+
+        a {
+          text-decoration: none;
+          display: block;
+          padding: 1em 0;
+          color: #fff;
+          @include transitions(background, 0.8s);
+
+          &:hover {
+            background: #0044cc;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -115,10 +171,30 @@ body {
 // -------------- MEDIA QUERIES ----------------
 // ---------------------------------------------
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .home {
   	ul {
   		width: 90%;
   	}
   }
+
+  .menu {
+    
+    .menu_mobile {
+      display: block;
+    }
+
+    .menu_desktop {
+      display: none;
+      padding-top: 50px;
+
+      ul {
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  h1 { padding-top: 80px;}
 }
